@@ -8,6 +8,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <string>
 
 using namespace std;
 
@@ -15,10 +16,10 @@ bool quit_code_flag = false;
 
 
 double triangle_calculation(double side_a, double side_b, double side_c){
-    if (side_a + side_b > side_c){
+    if (side_a + side_b > side_c || side_b + side_c > side_a || side_a + side_c > side_b){
         double s = (side_a + side_b + side_c)/2;
         double area = sqrt(s * (s - side_a) * (s - side_b) * (s - side_c));
-        cout << "Area: " << area << " Units" << endl;
+        cout << "Area: " << fixed << setprecision(2) << area << " Units" << endl;
         return area;
     }
     else{
@@ -35,27 +36,25 @@ int main() {
     double third_side;
     ///while (quit_code_flag == false){
     do{
-        cout << "Enter first side value (Enter Q to quit): ";
+        cout << "Enter first side value: ";
         cin >> first_side;
-        
-        if (cin.fail()) {
-            cin.clear();
-            string character;
-            cin >> character;
-            if (character == "Q" || character == "q"){
-                cout << "Exiting code...";
-                quit_code_flag = true;
-                break;
-            }
-        }
-
-        cout << "Enter second side value (Enter Q to quit): ";
+        cout << "Enter second side value: ";
         cin >> second_side;
-        cout << "Enter third side value (Enter Q to quit): ";
+        cout << "Enter third side value: ";
         cin >> third_side;
 
         triangle_calculation(first_side, second_side, third_side);
-
+        
+        cout << "Would you like to continue? (Y/n) ";
+        string user_decision;
+        cin >> user_decision;
+        if (user_decision == "N" || user_decision == "n"){
+            cout << "Exiting code..." << endl;
+            quit_code_flag = true;
+        }
+        else{
+            continue;
+        }
     }
     while (quit_code_flag == false);
 
