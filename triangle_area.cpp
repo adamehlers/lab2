@@ -32,7 +32,7 @@ double triangle_calculation(double side_a, double side_b, double side_c){
     }
     else{
         cout << "Error: THe sum of the first two sides is not larger than the third side" << endl;
-        return 1; ///Break statement instead??
+        return 1;
     }
 }
 
