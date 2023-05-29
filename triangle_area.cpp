@@ -13,9 +13,10 @@
 using namespace std;
 
 bool quit_code_flag = false;    ///Flag to determine whether to continue the program of quit
-double first_side;
-double second_side;
-double third_side;
+
+double first_side;  ///Variable to store length of side 1 of triangle
+double second_side;     ///Variable to store length of side 2 of triangle
+double third_side;  ///Variable to store length of side 3 of triangle
 
 /**
  * Function:        first_entered_value
@@ -27,11 +28,11 @@ void first_entered_value(){
     cout << "Enter first side value: ";
     cin >> first_side;
     if (cin.fail()){
-        cin.clear();
-        string incorrect_side_1;
-        cin >> incorrect_side_1;
+        cin.clear();    ///Clear the input error flag
+        string incorrect_side_1;    ///Define a variable for the incorrect input
+        cin >> incorrect_side_1;    ///Read the incorrect input and discard it
         cout << "Error: Inputted value was not valid. Please try again." << endl;
-        first_entered_value();
+        first_entered_value();  ///Have code run the function again (or until a valid input has been read)
     }
 }
 
