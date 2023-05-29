@@ -30,7 +30,7 @@ void first_entered_value(){
     if (cin.fail()){
         cin.clear();    ///Clear the input error flag
         string incorrect_side_1;    ///Define a variable for the incorrect input
-        cin >> incorrect_side_1;    ///Read the incorrect input and discard it
+        cin >> incorrect_side_1;    ///Read the incorrect input and discard it (variable never accessed)
         cout << "Error: Inputted value was not valid. Please try again." << endl;
         first_entered_value();  ///Have code run the function again (or until a valid input has been read)
     }
@@ -94,6 +94,7 @@ int main() {
         cout << "Would you like to continue? (Y/n) ";   ///Prompt to ask the user if they would like to continue (aka keep doing tirangle area calculations)
         string user_decision;
         cin >> user_decision;
+        cout << endl;
         if (user_decision == "N" || user_decision == "n"){  ///If the user inputs 'N' or 'n' for no, change the flag to true and exit the program
             cout << "Exiting code..." << endl;
             quit_code_flag = true;
