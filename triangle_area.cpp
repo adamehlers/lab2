@@ -13,6 +13,51 @@
 using namespace std;
 
 bool quit_code_flag = false;    ///Flag to determine whether to continue the program of quit
+double first_side;
+double second_side;
+double third_side;
+
+/**
+ * Function:        first_entered_value
+ *                  Takes the input of the first side of the triangle and stores it as a double. If the input is not valid, the function will clear the failed input state, take the invalid input, discard it, and prompt the user for a replacement value
+ *  
+ *      @note: This function acts the same way as second_entered_value and third_entered_value, with the only difference being the variable name that the input is stored in
+*/
+void first_entered_value(){
+    cout << "Enter first side value: ";
+    cin >> first_side;
+    if (cin.fail()){
+        cin.clear();
+        string incorrect_side_1;
+        cin >> incorrect_side_1;
+        cout << "Error: Inputted value was not valid. Please try again." << endl;
+        first_entered_value();
+    }
+}
+
+void second_entered_value(){
+    cout << "Enter second side value: ";
+    cin >> second_side;
+    if (cin.fail()){
+        cin.clear();
+        string incorrect_side_2;
+        cin >> incorrect_side_2;
+        cout << "Error: Inputted value was not valid. Please try again." << endl;
+        second_entered_value();
+    }
+}
+
+void third_entered_value(){
+    cout << "Enter third side value: ";
+    cin >> third_side;
+    if (cin.fail()){
+        cin.clear();
+        string incorrect_side_3;
+        cin >> incorrect_side_3;
+        cout << "Error: Inputted value was not valid. Please try again." << endl;
+        third_entered_value();
+    }
+}
 
 /**
  * Function:        triangle_calculation
@@ -31,24 +76,17 @@ double triangle_calculation(double side_a, double side_b, double side_c){
         return area;
     }
     else{
-        cout << "Error: THe sum of the first two sides is not larger than the third side" << endl;
+        cout << "Error: The sum of all combinations of two sides is not greater than the third side" << endl;
         return 1;
     }
 }
 
 
 int main() {
-    double first_side;
-    double second_side;
-    double third_side;
-
     do{
-        cout << "Enter first side value: ";
-        cin >> first_side;
-        cout << "Enter second side value: ";
-        cin >> second_side;
-        cout << "Enter third side value: ";
-        cin >> third_side;
+        first_entered_value();  ///Call function to input first side of triangle
+        second_entered_value(); ///Call function to input second side of triangle
+        third_entered_value();  ///Call function to input third side of triangle
 
         triangle_calculation(first_side, second_side, third_side);  ///Call the triangle_calculation function to compute the area
         
