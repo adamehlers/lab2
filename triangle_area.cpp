@@ -16,8 +16,7 @@ bool quit_code_flag = false;
 
 
 double triangle_calculation(double side_a, double side_b, double side_c){
-    ///Find smallest values, sort left to right, and then use the loop?
-    if (side_a + side_b > side_c){
+    if (side_a + side_b > side_c && side_b + side_c > side_a && side_a + side_c > side_b){
         double s = (side_a + side_b + side_c)/2;
         double area = sqrt(s * (s - side_a) * (s - side_b) * (s - side_c));
         cout << "Area: " << fixed << setprecision(2) << area << " Units" << endl;
